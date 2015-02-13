@@ -7,25 +7,31 @@ using System.IO;
 public class PlayerData : MonoBehaviour
 {
 
-    public void Save(ProfileData data)
+    public int profileID;
+    public ProfileData data;
+
+    void Awake()
+    {
+        Load(data, profileID);
+    }
+
+    public void Save(ProfileData data, int ID)
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/RubItPlayerProfiles.dat");
+        FileStream file = File.Create(Application.persistentDataPath + "/" + ProfileControl.profiles.profile[ID] + "Profile.dat");
         bf.Serialize(file, data);
         file.Close();
     }
 
-    ProfileData Load(ProfileData data)
+    public void Load(ProfileData data, int ID)
     {
-        if (File.Exists(Application.persistentDataPath + "/RubItPlayerProfiles.dat"))
+        if (File.Exists(Application.persistentDataPath + "/" + ProfileControl.profiles.profile[ID] + "Profile.dat"))
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/RubitPlayerProfiles.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/" + ProfileControl.profiles.profile[ID] + "Profile.dat", FileMode.Open);
             data = (ProfileData)bf.Deserialize(file);
             file.Close();
-
         }
-        return data; 
     }
 
     [Serializable]

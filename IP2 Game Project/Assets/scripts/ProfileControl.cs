@@ -8,8 +8,8 @@ public class ProfileControl : MonoBehaviour {
 
     public static ProfileControl profiles;
 
-    string[] profile = new string[3];
-    bool[] isEmpty = new bool[3];
+    public string[] profile = new string[3];
+    public bool[] isEmpty = new bool[3];
 
 	// Use this for initialization
 	void Awake () 

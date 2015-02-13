@@ -5,8 +5,8 @@ using System;
 public class Player : MonoBehaviour {
 
     private float playerScore;
-    public GameObject[] player1Particles = new GameObject[9];
-    public GameObject[] player2Particles = new GameObject[9];
+    public GameObject[] player1Planets = new GameObject[9];
+    public GameObject[] player2Planets = new GameObject[9];
 
 
 	// Use this for initialization
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour {
                     PowerBalance power1 = hit.transform.GetComponent<PowerBalance>();
                     power1.IncreaseValue();
                     int i = Convert.ToInt32(hit.transform.name); 
-                    PowerBalance power2 = player2Particles[i-1].GetComponent<PowerBalance>(); //i-1 because array starts at 0
+                    PowerBalance power2 = player2Planets[i-1].GetComponent<PowerBalance>(); //i-1 because array starts at 0
                     power2.DecraseValue();
                     
                 }
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour {
                     PowerBalance power1 = hit.transform.GetComponent<PowerBalance>();
                     power1.IncreaseValue();
                     int i = Convert.ToInt32(hit.transform.name);
-                    PowerBalance power2 = player1Particles[i-1].GetComponent<PowerBalance>();
+                    PowerBalance power2 = player1Planets[i-1].GetComponent<PowerBalance>();
                     power2.DecraseValue();
                 }
 
