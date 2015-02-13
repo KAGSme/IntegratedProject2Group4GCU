@@ -5,9 +5,14 @@ using System;
 public class Player : MonoBehaviour {
 
     private float playerScore;
-    public GameObject[] player1Planets = new GameObject[9];
-    public GameObject[] player2Planets = new GameObject[9];
+    public int playerNumber;
+    private string status = "";
+    public GameObject[] player1Particles = new GameObject[9];
+    public GameObject[] player2Particles = new GameObject[9];
 
+//    public float minSwipeDistance;
+    private Vector2 touchStartPosition;
+    public int t;
 
 	// Use this for initialization
 	void Start () {
@@ -26,30 +31,51 @@ public class Player : MonoBehaviour {
     //its going to look in the player2Particles[] for the same name. 
     void SwipePower()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount >0)
         {
+            Touch touch = Input.touches[0];
             RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit))
+            Ray ray = Camera.main.ScreenPointToRay(touch.position);
+            Debug.Log("Hurray!");
+            
+            switch (touch.phase)
             {
-                if (hit.collider.gameObject.tag == "player1particles") 
-                {
-                    PowerBalance power1 = hit.transform.GetComponent<PowerBalance>();
-                    power1.IncreaseValue();
-                    int i = Convert.ToInt32(hit.transform.name); 
-                    PowerBalance power2 = player2Planets[i-1].GetComponent<PowerBalance>(); //i-1 because array starts at 0
-                    power2.DecraseValue();
+                case TouchPhase.Began:
+                    status = "Begin";
+                    touchStartPosition = touch.position;
+                    break;
+                case TouchPhase.Moved:
+                    status = "moving";
                     
-                }
-                else if (hit.collider.gameObject.tag == "player2particles")
-                {
-                    PowerBalance power1 = hit.transform.GetComponent<PowerBalance>();
-                    power1.IncreaseValue();
-                    int i = Convert.ToInt32(hit.transform.name);
-                    PowerBalance power2 = player1Planets[i-1].GetComponent<PowerBalance>();
-                    power2.DecraseValue();
-                }
+                    float swipeDistance =( touch.position - touchStartPosition).magnitude;
+                    Debug.Log(swipeDistance);
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        if (hit.collider.gameObject.tag == "player1particles" && playerNumber == 1 /*&& swipeDistance > minSwipeDistance*/)
+                        {
+                            t++;
+                            status = "hit";
+                            PowerBalance power1 = hit.transform.GetComponent<PowerBalance>();
+                            power1.IncreaseValue();
+                            int i = Convert.ToInt32(hit.transform.name);
+                            PowerBalance power2 = player2Particles[i - 1].GetComponent<PowerBalance>(); //i-1 because array starts at 0
+                            power2.DecraseValue();
+
+
+                        }
+                        else if (hit.collider.gameObject.tag == "player2particles" && playerNumber == 2 /*&& swipeDistance > minSwipeDistance*/)
+                        {
+                            status = "hit";
+                            PowerBalance power1 = hit.transform.GetComponent<PowerBalance>();
+                            power1.IncreaseValue();
+                            int i = Convert.ToInt32(hit.transform.name);
+                            PowerBalance power2 = player1Particles[i - 1].GetComponent<PowerBalance>();
+                            power2.DecraseValue();
+                            
+                        }
+                        touchStartPosition = touch.position;
+            }
+                    break; 
 
             }
         }
@@ -59,4 +85,12 @@ public class Player : MonoBehaviour {
     {
         return playerScore;
     }
+
+    void OnGUI()
+    {
+        float particle = player1Particles[0].GetComponent<PowerBalance>().particleValue;
+        GUI.Label(new Rect(10, 10, 200, 200), Convert.ToString(particle) );
+
+    }
+
 }
