@@ -5,6 +5,8 @@ public class PowerBalance : MonoBehaviour {
 
     public float particleValue = 50; //The energy level they start with
     public float speed = 1; //How much they increase/decrease per touch
+    public int planetNumber;
+    public int playerNumber;
     
     
 	
@@ -24,6 +26,11 @@ public class PowerBalance : MonoBehaviour {
     float GetParticleValue()
     {
         return particleValue;
+    }
+
+    void OnGUI()
+    {
+                GUI.Label(new Rect(0 + 200 * playerNumber - 1, 0 + 50 * planetNumber, 200, 200), "Player " + playerNumber + ", Planet " + planetNumber + ", Energy: " + particleValue);
     }
 
 }

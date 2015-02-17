@@ -91,10 +91,10 @@ public class Player : MonoBehaviour {
 
     void OnGUI()
     {
-        foreach(Touch touch in Input.touches){
-            int num = touch.fingerId;
-            GUI.Label(new Rect(0 + 200 * num, 10, 200, 200), touch.fingerId + "Player 1 Planet Energy: "  + guiEnergy);
-        }
+        //foreach(Touch touch in Input.touches){
+            //int num = touch.fingerId;
+           // GUI.Label(new Rect(0 + 200 * num, 10, 200, 200), touch.fingerId + "Player 1 Planet Energy: "  + guiEnergy);
+        //}
 
     }
 
