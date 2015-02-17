@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
 //    public float minSwipeDistance;
     private Vector2 touchStartPosition;
     public int t;
+    float guiEnergy;
 
 	// Use this for initialization
 	void Start () {
@@ -53,9 +54,11 @@ public class Player : MonoBehaviour {
                     {
                         if (hit.collider.gameObject.tag == "player1particles" && playerNumber == 1 /*&& swipeDistance > minSwipeDistance*/)
                         {
+
                             t++;
                             status = "hit";
                             PowerBalance power1 = hit.transform.GetComponent<PowerBalance>();
+                            guiEnergy = power1.particleValue;
                             power1.IncreaseValue();
                             int i = Convert.ToInt32(hit.transform.name);
                             PowerBalance power2 = player2Particles[i - 1].GetComponent<PowerBalance>(); //i-1 because array starts at 0
@@ -88,8 +91,10 @@ public class Player : MonoBehaviour {
 
     void OnGUI()
     {
-        float particle = player1Particles[0].GetComponent<PowerBalance>().particleValue;
-        GUI.Label(new Rect(10, 10, 200, 200), Convert.ToString(particle) );
+        foreach(Touch touch in Input.touches){
+            int num = touch.fingerId;
+            GUI.Label(new Rect(0 + 200 * num, 10, 200, 200), touch.fingerId + "Player 1 Planet Energy: "  + guiEnergy);
+        }
 
     }
 
