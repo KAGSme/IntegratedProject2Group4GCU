@@ -3,34 +3,55 @@ using System.Collections;
 
 public class PowerBalance : MonoBehaviour {
 
-    public float particleValue = 50; //The energy level they start with
-    public float speed = 1; //How much they increase/decrease per touch
-    public int planetNumber;
-    public int playerNumber;
-    
-    
-	
-    //Use this method when you want to increase the energy level
-    public void IncreaseValue()
+    int activePlanets;
+    public int activePlanetLimit;
+    public Player[] players = new Player[2];
+
+    string touchesCheck;
+    void Update()
     {
-        particleValue += speed * Time.deltaTime;
+        PlayerSwipe();
     }
 
-    //And this one to decrease it. 
-    public void DecraseValue( )
+    void PlayerSwipe()
     {
-        particleValue -= speed * Time.deltaTime;     
-    }
-    
-    //Going to be used by the Player script to return the total score of the player, by summing up all particle values
-    float GetParticleValue()
-    {
-        return particleValue;
+        if (Input.touchCount > 0)
+        {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                Touch touch = Input.GetTouch(i);
+                touchesCheck = "touchDetected";
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                Debug.Log("touchDetected");
+
+                switch(touch.phase)
+                {
+                        
+                    case(TouchPhase.Moved):
+                        if (Physics.Raycast(ray, out hit))
+                        {
+                            if (hit.collider.gameObject.tag == "PlayerPlanet")
+                            {
+                                Planet planet = hit.collider.gameObject.GetComponent<Planet>();
+                                if (planet.belongsToPlayer == 1)
+                                {
+                                    planet.EnergyExchange(players[0], players[1]);
+                                }
+                                else if (planet.belongsToPlayer == 2)
+                                {
+                                    planet.EnergyExchange(players[1], players[0]);
+                                }
+                            }
+                        }
+                    break;
+                }
+            }
+        }
     }
 
     void OnGUI()
     {
-                GUI.Label(new Rect(0 + 200 * playerNumber - 1, 0 + 50 * planetNumber, 200, 200), "Player " + playerNumber + ", Planet " + planetNumber + ", Energy: " + particleValue);
+        GUI.Label(new Rect(1000, 0, 200, 200), touchesCheck);
     }
-
 }

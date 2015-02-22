@@ -42,6 +42,9 @@ public class PlayerData : MonoBehaviour
         int level;
         float exp;
         bool[] planetsUnlocked = new bool[10];
+        int[] deck1 = new int[5];
+        int[] deck2 = new int[5];
+        int[] deck3 = new int[5];
     }
 
 }
