@@ -32,7 +32,7 @@ public class Planet : MonoBehaviour {
         energy += drainSpeed * Time.deltaTime;
         drainingPlayer.playerScore += drainSpeed * Time.deltaTime;
 
-        drainedPlayer.playerPlanets[planetNumber].energy -= drainSpeed * Time.deltaTime;
+        drainedPlayer.playerPlanets[planetNumber - 1].energy -= drainSpeed * Time.deltaTime;
         drainedPlayer.playerScore += drainSpeed * Time.deltaTime;
     }
 

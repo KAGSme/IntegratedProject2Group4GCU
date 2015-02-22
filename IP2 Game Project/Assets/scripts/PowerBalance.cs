@@ -5,8 +5,9 @@ public class PowerBalance : MonoBehaviour {
 
     int activePlanets;
     public int activePlanetLimit;
-    Player[] players = new Player[2];
+    public Player[] players = new Player[2];
 
+    string touchesCheck;
     void Update()
     {
         PlayerSwipe();
@@ -16,16 +17,18 @@ public class PowerBalance : MonoBehaviour {
     {
         if (Input.touchCount > 0)
         {
-            Touch[] myTouches = Input.touches;
             for (int i = 0; i < Input.touchCount; i++)
             {
+                Touch touch = Input.GetTouch(i);
+                touchesCheck = "touchDetected";
                 RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.touches[i].position);
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
                 Debug.Log("touchDetected");
 
-                switch (Input.touches[i].phase)
+                switch(touch.phase)
                 {
-                    case TouchPhase.Moved:
+                        
+                    case(TouchPhase.Moved):
                         if (Physics.Raycast(ray, out hit))
                         {
                             if (hit.collider.gameObject.tag == "PlayerPlanet")
@@ -41,9 +44,14 @@ public class PowerBalance : MonoBehaviour {
                                 }
                             }
                         }
-                        break;
+                    break;
                 }
             }
         }
+    }
+
+    void OnGUI()
+    {
+        GUI.Label(new Rect(1000, 0, 200, 200), touchesCheck);
     }
 }
