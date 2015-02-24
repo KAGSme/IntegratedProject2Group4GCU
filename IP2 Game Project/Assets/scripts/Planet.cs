@@ -23,7 +23,7 @@ public class Planet : MonoBehaviour {
 	void Start () {
         energy = maxEnergy / 2;
         isAlive = true;
-        energyBarWidth = energy/2;
+        energyBarWidth = energy;
         //backgroundEnergyBar = energyBar;
 	}
 

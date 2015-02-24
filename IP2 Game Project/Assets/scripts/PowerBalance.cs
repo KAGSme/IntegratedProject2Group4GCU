@@ -40,6 +40,7 @@ public class PowerBalance : MonoBehaviour {
                                     if (planet.belongsToPlayer == 1)
                                     {
                                         planet.EnergyExchange(players[0], players[1]);
+                                        planet.energyBarWidth++;
                                     }
                                     else if (planet.belongsToPlayer == 2)
                                     {
