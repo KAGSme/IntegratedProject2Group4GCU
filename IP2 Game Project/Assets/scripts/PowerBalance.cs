@@ -6,6 +6,7 @@ public class PowerBalance : MonoBehaviour {
     int activePlanets;
     public int activePlanetLimit;
     public Player[] players = new Player[2];
+    public GameControl_PowerBalanceMode gameController;
 
     string touchesCheck;
     void Update()
@@ -15,39 +16,44 @@ public class PowerBalance : MonoBehaviour {
 
     void PlayerSwipe()
     {
-        if (Input.touchCount > 0)
+        if (gameController.state == State.Running)
         {
-            for (int i = 0; i < Input.touchCount; i++)
+            if (Input.touchCount > 0)
             {
-                Touch touch = Input.GetTouch(i);
-                touchesCheck = "touchDetected";
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                Debug.Log("touchDetected");
-
-                switch(touch.phase)
+                for (int i = 0; i < Input.touchCount; i++)
                 {
-                        
-                    case(TouchPhase.Moved):
-                        if (Physics.Raycast(ray, out hit))
-                        {
-                            if (hit.collider.gameObject.tag == "PlayerPlanet")
+                    Touch touch = Input.GetTouch(i);
+                    touchesCheck = "touchDetected";
+                    RaycastHit hit;
+                    Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                    Debug.Log("touchDetected");
+
+                    switch (touch.phase)
+                    {
+
+                        case (TouchPhase.Moved):
+                            if (Physics.Raycast(ray, out hit))
                             {
-                                Planet planet = hit.collider.gameObject.GetComponent<Planet>();
-                                if (planet.belongsToPlayer == 1)
+                                if (hit.collider.gameObject.tag == "PlayerPlanet")
                                 {
-                                    planet.EnergyExchange(players[0], players[1]);
-                                }
-                                else if (planet.belongsToPlayer == 2)
-                                {
-                                    planet.EnergyExchange(players[1], players[0]);
+                                    Planet planet = hit.collider.gameObject.GetComponent<Planet>();
+                                    if (planet.belongsToPlayer == 1)
+                                    {
+                                        planet.EnergyExchange(players[0], players[1]);
+                                        planet.energyBarWidth++;
+                                    }
+                                    else if (planet.belongsToPlayer == 2)
+                                    {
+                                        planet.EnergyExchange(players[1], players[0]);
+                                    }
                                 }
                             }
-                        }
-                    break;
+                            break;
+                    }
                 }
             }
         }
+        
     }
 
     void OnGUI()
