@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Planet : MonoBehaviour {
 
@@ -11,20 +12,25 @@ public class Planet : MonoBehaviour {
     public float drainSpeed;
     public bool isAlive;
     public bool isActive;
-    public Texture2D backgroundEnergyBar;
-    public Texture2D energyBar;
-    public float energyBarWidth;
+  //  public Texture2D backgroundEnergyBar;
+    //public Texture2D energyBar;
+ //   public float energyBarWidth;
     public GameControl_PowerBalanceMode gameController;
-    public float rotAngle = -90;
-    private Vector2 pivotPoint;
-    public float x;
-    public float y;
+   // public float rotAngle = -90;
+  //  private Vector2 pivotPoint;
+    //public float x;
+  //  public float y;
+    public Image energyBar;
+
 
 	void Start () {
         energy = maxEnergy / 2;
         isAlive = true;
-        energyBarWidth = energy;
+      //  energyBarWidth = energy;
         //backgroundEnergyBar = energyBar;
+        energyBar = GetComponentInChildren<Image>();
+        energyBar.fillAmount = 0.5f;
+
 	}
 
     void Update()
@@ -38,10 +44,10 @@ public class Planet : MonoBehaviour {
         if (gameController.state == State.Running)
         {
 
-            pivotPoint = new Vector2(x, y);
-            GUIUtility.RotateAroundPivot(rotAngle, pivotPoint);
-            GUI.DrawTexture(new Rect(x, y, 50, 20), backgroundEnergyBar);
-            GUI.DrawTexture(new Rect(x, y, energyBarWidth, 20), energyBar);
+           // pivotPoint = new Vector2(x, y);
+          //  GUIUtility.RotateAroundPivot(rotAngle, pivotPoint);
+          //  GUI.DrawTexture(new Rect(x, y, 50, 20), backgroundEnergyBar);
+         //   GUI.DrawTexture(new Rect(x, y, energyBarWidth, 20), energyBar);
         }
 
 	}
@@ -50,10 +56,10 @@ public class Planet : MonoBehaviour {
     {
         energy += drainSpeed * Time.deltaTime;
         drainingPlayer.playerScore += drainSpeed * Time.deltaTime;
-        energyBarWidth += drainSpeed * Time.deltaTime;
+        energyBar.fillAmount += drainSpeed * Time.deltaTime;
 
         drainedPlayer.playerPlanets[planetNumber - 1].energy -= drainSpeed * Time.deltaTime;
-        drainedPlayer.playerPlanets[planetNumber - 1].energyBarWidth -= drainSpeed * Time.deltaTime;
+        drainedPlayer.playerPlanets[planetNumber - 1].energyBar.fillAmount -= drainSpeed * Time.deltaTime;
         drainedPlayer.playerScore -= drainSpeed * Time.deltaTime;
     }
 
