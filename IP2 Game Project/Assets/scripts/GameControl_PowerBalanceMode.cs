@@ -82,18 +82,18 @@ public class GameControl_PowerBalanceMode : MonoBehaviour {
     {
         if (timer.timer == 0)
         {
-            if (player[0].playerScore > player[1].playerScore)
+            if (player[0].PlayerEnergyTracker() > player[1].PlayerEnergyTracker())
             {
                 state = State.End;
                 Time.timeScale = 0;
-                winningScore = player[0].playerScore;
+                winningScore = player[0].PlayerScore;
                 winnerMessage = "Player 1 wins with ";
             }
             else
             {
                 state = State.End;
                 Time.timeScale = 0;
-                winningScore = player[1].playerScore;
+                winningScore = player[1].PlayerScore;
                 winnerMessage = "Player 2 wins with ";
             }
         }

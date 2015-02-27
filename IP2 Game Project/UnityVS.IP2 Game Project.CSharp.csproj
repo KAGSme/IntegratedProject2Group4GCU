@@ -55,13 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\scripts\GameControl_PowerBalanceMode.cs" />
-<<<<<<< HEAD
-<<<<<<< HEAD
     <Compile Include="Assets\scripts\NetworkManager.cs" />
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
     <Compile Include="Assets\scripts\Planet.cs" />
     <Compile Include="Assets\scripts\Player.cs" />
     <Compile Include="Assets\scripts\PlayerData.cs" />
