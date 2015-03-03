@@ -65,7 +65,7 @@ public class Planet : MonoBehaviour {
             Energy += drainSpeed * Time.deltaTime;
             drainingPlayer.PlayerScore += drainSpeed * Time.deltaTime;
             energyBar.fillAmount = Energy / maxEnergy;
-            animation.Play();
+            
 
             drainedPlayer.playerPlanets[planetNumber - 1].Energy -= drainSpeed * Time.deltaTime;
             drainedPlayer.playerPlanets[planetNumber - 1].energyBar.fillAmount = drainedPlayer.playerPlanets[planetNumber - 1].Energy / drainedPlayer.playerPlanets[planetNumber - 1].maxEnergy;
