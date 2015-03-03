@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Timer2 : MonoBehaviour {
 
-    public GameControl_PowerBalanceMode gameController = new GameControl_PowerBalanceMode();
+    public GameControl_PowerBalanceMode gameController;
     private float rotAngle = -90;
     private Vector2 pivotPoint;
     public float timer;
