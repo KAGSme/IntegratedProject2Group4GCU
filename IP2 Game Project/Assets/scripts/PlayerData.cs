@@ -10,10 +10,11 @@ public class PlayerData : MonoBehaviour
     public int profileID;
     public ProfileData data;
 
-    void Awake()
-    {
-        Load(data, profileID);
-    }
+    /* This Script deals with loading and saving a players profile data to a particular profile.
+    *A profile data script should implemented in the scene for each player in the scene.
+    *it is wise to have another script set the profile ID and call the Load() function when the scene first loads
+    *and to have the Save function called before another scene is loaded.
+    */
 
     public void Save(ProfileData data, int ID)
     {

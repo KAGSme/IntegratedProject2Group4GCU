@@ -7,7 +7,7 @@ public class Timer1 : MonoBehaviour {
     private Vector2 pivotPoint;
     public float timer;
     public GUIStyle timerStyle;
-    public GameControl_PowerBalanceMode gameController = new GameControl_PowerBalanceMode();
+    public GameControl_PowerBalanceMode gameController;
 
 	// Use this for initialization
 	void Start () {
