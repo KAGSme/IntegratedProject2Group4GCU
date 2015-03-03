@@ -15,7 +15,7 @@ sysinfo.txt
 *.csproj
 *.pidb
 *.suo
-*.sln*
+*.sln
 *.user
 *.unityproj
 *.booproj
@@ -30,5 +30,3 @@ sysinfo.txt
 ehthumbs.db
 [Tt]humbs.db
 *.dwlt
-*.csproj
-*.csproj
