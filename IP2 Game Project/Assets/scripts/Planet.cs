@@ -6,7 +6,7 @@ public class Planet : MonoBehaviour {
 
     public PlayerNumber belongsToPlayer;
     public int planetNumber;
-    public float energy;
+    private float energy;
     public float maxEnergy = 100;
     private float minEnergy = 0;
     public float drainSpeed;
@@ -14,7 +14,6 @@ public class Planet : MonoBehaviour {
     private bool isActive;
     public GameControl_PowerBalanceMode gameController;
     public Image energyBar;
-
 
     public bool IsAlive
     {
@@ -45,7 +44,7 @@ public class Planet : MonoBehaviour {
         isAlive = true;
         energyBar = GetComponentInChildren<Image>();
         energyBar.fillAmount = 0.5f;
-        
+
 	}
 
     void Update()
@@ -65,7 +64,6 @@ public class Planet : MonoBehaviour {
             Energy += drainSpeed * Time.deltaTime;
             drainingPlayer.PlayerScore += drainSpeed * Time.deltaTime;
             energyBar.fillAmount = Energy / maxEnergy;
-            animation.Play();
 
             drainedPlayer.playerPlanets[planetNumber - 1].Energy -= drainSpeed * Time.deltaTime;
             drainedPlayer.playerPlanets[planetNumber - 1].energyBar.fillAmount = drainedPlayer.playerPlanets[planetNumber - 1].Energy / drainedPlayer.playerPlanets[planetNumber - 1].maxEnergy;
