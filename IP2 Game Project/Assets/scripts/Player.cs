@@ -9,6 +9,8 @@ public class Player : MonoBehaviour {
     public PlayerNumber playerNumber;
     private float playerScore;    
     public Planet[] playerPlanets;
+    public Planet[] playerPlanetDeck;
+    public PlanetSpawner pSpawn;
 
     public float PlayerScore
     {
@@ -20,6 +22,10 @@ public class Player : MonoBehaviour {
     void Start()
     {
         playerScore = 0f;
+        if (pSpawn != null)
+        {
+            pSpawn.SpawnPlanets(playerPlanetDeck, playerPlanets, this);
+        }
     }
 
     void Update()
