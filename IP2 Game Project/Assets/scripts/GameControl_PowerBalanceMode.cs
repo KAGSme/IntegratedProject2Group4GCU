@@ -47,7 +47,7 @@ public class GameControl_PowerBalanceMode : MonoBehaviour {
         }
         if (state == State.End)
         {
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 800, 400), winnerMessage + winningScore + " points");
+            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 800, 400), winnerMessage + Convert.ToInt32(winningScore) + " points");
             if(GUI.Button(new Rect (Screen.width/2, Screen.height/2 +50, 100,50), "Play Again"))
             {
                 Application.LoadLevel(Application.loadedLevel);

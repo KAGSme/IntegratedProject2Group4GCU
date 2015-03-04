@@ -36,12 +36,12 @@ public class Player : MonoBehaviour {
         return totalEnergy;
     }
 
-    void OnGUI()
-    {
-        if (playerNumber == PlayerNumber.player1)
-        {
-            GUI.Label(new Rect(Screen.width / 2, 10, 200, 200), "Player 1 score" + playerScore);
-            GUI.Label(new Rect(Screen.width / 2, 30, 200, 200), "Planet 1 score" + playerPlanets[0].Energy);
-        }
-    }
+    //void OnGUI()
+    //{
+    //    if (playerNumber == PlayerNumber.player1)
+    //    {
+    //        GUI.Label(new Rect(Screen.width / 2, 10, 200, 200), "Player 1 score" + playerScore);
+    //        GUI.Label(new Rect(Screen.width / 2, 30, 200, 200), "Planet 1 score" + playerPlanets[0].Energy);
+    //    }
+    //}
 }

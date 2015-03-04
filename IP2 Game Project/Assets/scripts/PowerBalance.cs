@@ -38,6 +38,7 @@ public class PowerBalance : MonoBehaviour {
                                     if (planet.belongsToPlayer == PlayerNumber.player1)
                                     {
                                         planet.EnergyExchange(players[0], players[1]);
+
                                     }
                                     else if (planet.belongsToPlayer == PlayerNumber.player2)
                                     {
@@ -46,21 +47,22 @@ public class PowerBalance : MonoBehaviour {
                                 }
                             }
                             break;
+                            
                     }
                 }
             }
         }   
     }
 
-    void OnGUI()
-    {
-        if (Input.touchCount > 0)
-        {
-            for (int i = 0; i < Input.touchCount; i++)
-            {
-                GUI.Label(new Rect(0, 10 * i,200,200), " " + Input.GetTouch(i).deltaPosition.magnitude);
-            }
-        }
-    }
+    //void OnGUI()
+    //{
+    //    if (Input.touchCount > 0)
+    //    {
+    //        for (int i = 0; i < Input.touchCount; i++)
+    //        {
+    //            GUI.Label(new Rect(0, 10 * i,200,200), " " + Input.GetTouch(i).deltaPosition.magnitude);
+    //        }
+    //    }
+    //}
 
 }

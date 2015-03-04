@@ -1,24 +1,24 @@
 # =============== #
 # Unity generated #
 # =============== #
-[Tt]emp/
-[Oo]bj/
-[Bb]uild
-[Ll]ibrary/
+IP2 Game Project/[Tt]emp/
+IP2 Game Project/[Oo]bj/
+IP2 Game Project/[Bb]uild
+IP2 Game Project/[Ll]ibrary/
 sysinfo.txt
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
 [Ee]xported[Oo]bj/
-/*.userprefs
-/*.csproj
-/*.pidb
-/*.suo
-/*.sln*
-/*.user
-/*.unityproj
-/*.booproj
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
  
 # ============ #
 # OS generated #
@@ -27,12 +27,7 @@ sysinfo.txt
 ._*
 .Spotlight-V100
 .Trashes
-Icon?
 ehthumbs.db
 [Tt]humbs.db
 *.dwlt
-*.csproj
-IP2 Game Project/Library/CurrentLayout.dwlt
-*.csproj
-IP2 Game Project/Library/InspectorExpandedItems.asset
 IP2 Game Project/UnityVS.IP2 Game Project.CSharp.csproj
