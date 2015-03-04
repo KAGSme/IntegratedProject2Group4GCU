@@ -55,8 +55,8 @@ public class Planet : MonoBehaviour {
     /// This increases the energy of the planet being swiped and 
     /// decreases the energy of the mirrored planet
     /// </summary>
-    /// <param name="drainingPlayer"></param>
-    /// <param name="drainedPlayer"></param>
+    /// <param name="drainingPlayer">Player recieving energy</param>
+    /// <param name="drainedPlayer">Player losing energy</param>
     public void EnergyExchange(Player drainingPlayer, Player drainedPlayer)
     {
         if (Energy < maxEnergy)
