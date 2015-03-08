@@ -15,18 +15,33 @@ public class GameControl_PowerBalanceMode : MonoBehaviour {
     public float winningScore;
     public GameObject playAgainButton;
     public GameObject QuitButton;
+    private Image powerBar;
+    public float totalScore;
+    public GameObject powerObject;
 
 	// Use this for initialization
 	void Start () {
         state = State.Start;
         Time.timeScale = 1;
-        
+        powerBar = powerObject.GetComponent<Image>();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
         DecideWinner();
         ButtonState();
+        totalScore = player[0].playerScore + player[1].playerScore;
+        if (player[0].playerScore == player[1].playerScore)
+        {
+            powerBar.fillAmount = 0.5f;
+        }
+        else
+        {
+            powerBar.fillAmount = player[0].playerScore / totalScore;
+
+        }
+
 	}
 
 

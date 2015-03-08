@@ -7,7 +7,7 @@ public enum PlayerNumber { player1, player2, player3, player4};
 public class Player : MonoBehaviour {
 
     public PlayerNumber playerNumber;
-    private float playerScore;    
+    public float playerScore;    
     public Planet[] playerPlanets;
     public Planet[] playerPlanetDeck;
     public PlanetSpawner pSpawn;
