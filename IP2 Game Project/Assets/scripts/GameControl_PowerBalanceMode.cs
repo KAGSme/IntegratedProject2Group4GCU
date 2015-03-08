@@ -99,7 +99,7 @@ public class GameControl_PowerBalanceMode : MonoBehaviour {
                 //state = State.End;
                 Time.timeScale = 0;
                 winningScore = player[0].PlayerScore;
-                winnerMessage = "Blue wins with " + Convert.ToString(winningScore);
+                winnerMessage = "Blue wins with " + Convert.ToString(winningScore) + " points";
                 winnerText.text = winnerMessage;
             }
             else
@@ -107,7 +107,7 @@ public class GameControl_PowerBalanceMode : MonoBehaviour {
                // state = State.End;
                 Time.timeScale = 0;
                 winningScore = player[1].PlayerScore;
-                winnerMessage = "Red wins with " + Convert.ToString(winningScore);
+                winnerMessage = "Red wins with " + Convert.ToString(winningScore) + " points";
                 winnerText.text = winnerMessage;
             }
         }
