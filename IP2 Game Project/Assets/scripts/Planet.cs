@@ -6,7 +6,7 @@ public class Planet : MonoBehaviour {
 
     public PlayerNumber belongsToPlayer;
     public int planetNumber;
-    private float energy;
+    public float energy;
     public float maxEnergy = 100;
     private float minEnergy = 0;
     public float drainSpeed;
@@ -62,12 +62,12 @@ public class Planet : MonoBehaviour {
         if (Energy < maxEnergy)
         {
             Energy += drainSpeed * Time.deltaTime;
-            drainingPlayer.PlayerScore += drainSpeed * Time.deltaTime;
+            //drainingPlayer.PlayerScore += drainSpeed * Time.deltaTime;
             energyBar.fillAmount = Energy / maxEnergy;
 
             drainedPlayer.playerPlanets[planetNumber - 1].Energy -= drainSpeed * Time.deltaTime;
             drainedPlayer.playerPlanets[planetNumber - 1].energyBar.fillAmount = drainedPlayer.playerPlanets[planetNumber - 1].Energy / drainedPlayer.playerPlanets[planetNumber - 1].maxEnergy;
-            drainedPlayer.PlayerScore -= drainSpeed * Time.deltaTime;
+            //drainedPlayer.PlayerScore -= drainSpeed * Time.deltaTime;
         }
     }
 

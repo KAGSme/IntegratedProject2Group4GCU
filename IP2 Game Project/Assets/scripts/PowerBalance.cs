@@ -38,11 +38,13 @@ public class PowerBalance : MonoBehaviour {
                                     if (planet.belongsToPlayer == PlayerNumber.player1)
                                     {
                                         planet.EnergyExchange(players[0], players[1]);
+                                        players[0].playerScore++;
 
                                     }
                                     else if (planet.belongsToPlayer == PlayerNumber.player2)
                                     {
                                         planet.EnergyExchange(players[1], players[0]);
+                                        players[1].playerScore++;
                                     }
                                 }
                             }
