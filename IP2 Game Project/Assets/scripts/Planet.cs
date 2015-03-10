@@ -2,14 +2,19 @@
 using System.Collections;
 using UnityEngine.UI;
 
+public enum DrainType { swipeSpeed, overTime};
+
 public class Planet : MonoBehaviour {
 
     public PlayerNumber belongsToPlayer;
+    public DrainType drainType;
+
     public int planetNumber;
     public float energy;
     public float maxEnergy = 100;
     private float minEnergy = 0;
-    public float drainSpeed;
+    public float baseDrainSpeed = 1;
+    float drainSpeed;
     private bool isAlive;
     private bool isActive;
     public GameControl_PowerBalanceMode gameController;
@@ -49,7 +54,24 @@ public class Planet : MonoBehaviour {
 
     void Update()
     {
+        DrainSpeedCheck();
         PlanetDeath();
+    }
+
+    void DrainSpeedCheck()
+    {
+        if (drainType == DrainType.swipeSpeed)
+        {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                Touch touch = Input.GetTouch(i);
+                drainSpeed = touch.deltaPosition.magnitude;
+            }
+        }
+        else if (drainType == DrainType.overTime)
+        {
+            drainSpeed = 0;
+        }
     }
     /// <summary>
     /// This increases the energy of the planet being swiped and 
@@ -61,11 +83,11 @@ public class Planet : MonoBehaviour {
     {
         if (Energy < maxEnergy)
         {
-            Energy += drainSpeed * Time.deltaTime;
+            Energy += baseDrainSpeed + drainSpeed * Time.deltaTime;
             //drainingPlayer.PlayerScore += drainSpeed * Time.deltaTime;
             energyBar.fillAmount = Energy / maxEnergy;
 
-            drainedPlayer.playerPlanets[planetNumber - 1].Energy -= drainSpeed * Time.deltaTime;
+            drainedPlayer.playerPlanets[planetNumber - 1].Energy -= baseDrainSpeed + drainSpeed * Time.deltaTime;
             drainedPlayer.playerPlanets[planetNumber - 1].energyBar.fillAmount = drainedPlayer.playerPlanets[planetNumber - 1].Energy / drainedPlayer.playerPlanets[planetNumber - 1].maxEnergy;
             //drainedPlayer.PlayerScore -= drainSpeed * Time.deltaTime;
         }
