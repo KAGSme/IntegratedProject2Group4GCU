@@ -56,15 +56,16 @@ public class PowerBalance : MonoBehaviour {
         }   
     }
 
-    //void OnGUI()
-    //{
-    //    if (Input.touchCount > 0)
-    //    {
-    //        for (int i = 0; i < Input.touchCount; i++)
-    //        {
-    //            GUI.Label(new Rect(0, 10 * i,200,200), " " + Input.GetTouch(i).deltaPosition.magnitude);
-    //        }
-    //    }
-    //}
+    
+    void OnGUI()
+    {
+       if (Input.touchCount > 0)
+       {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                GUI.Label(new Rect(0, 10 * i,200,200), " " + Input.GetTouch(i).deltaPosition.magnitude);
+            }
+        }
+    }
 
 }
