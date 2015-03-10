@@ -35,13 +35,13 @@ public class PowerBalance : MonoBehaviour {
                                 if (hit.collider.gameObject.tag == "PlayerPlanet" && touch.deltaPosition.magnitude >= swipeSpeed)
                                 {
                                     planet = hit.collider.gameObject.GetComponent<Planet>();
-                                    if (planet.belongsToPlayer == PlayerNumber.player1)
+                                    if (planet.belongsToPlayer == PlayerNumber.player1 && planet.IsAlive && planet.energy<100)
                                     {
                                         planet.EnergyExchange(players[0], players[1]);
                                         players[0].playerScore++;
 
                                     }
-                                    else if (planet.belongsToPlayer == PlayerNumber.player2)
+                                    else if (planet.belongsToPlayer == PlayerNumber.player2 && planet.IsAlive && planet.energy <100)
                                     {
                                         planet.EnergyExchange(players[1], players[0]);
                                         players[1].playerScore++;
@@ -56,15 +56,16 @@ public class PowerBalance : MonoBehaviour {
         }   
     }
 
-    //void OnGUI()
-    //{
-    //    if (Input.touchCount > 0)
-    //    {
-    //        for (int i = 0; i < Input.touchCount; i++)
-    //        {
-    //            GUI.Label(new Rect(0, 10 * i,200,200), " " + Input.GetTouch(i).deltaPosition.magnitude);
-    //        }
-    //    }
-    //}
+    
+    void OnGUI()
+    {
+       if (Input.touchCount > 0)
+       {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                GUI.Label(new Rect(0, 10 * i,200,200), " " + Input.GetTouch(i).deltaPosition.magnitude);
+            }
+        }
+    }
 
 }
