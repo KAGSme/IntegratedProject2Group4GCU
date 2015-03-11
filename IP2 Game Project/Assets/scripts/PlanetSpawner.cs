@@ -8,7 +8,7 @@ public class PlanetSpawner : MonoBehaviour {
     /// </summary>
     /// <param name="planets">Planets to be instantiated</param>
     /// <param name="currentPlanets">default planets to be replaced</param>
-    /// <param name="player">default planets to be replaced</param>
+    /// <param name="player">player's planets to be assigned</param>
     public void SpawnPlanets(Planet[] planets, Planet[] currentPlanets, Player player)
     {
         for (int i = 0; i < currentPlanets.Length; i++)
