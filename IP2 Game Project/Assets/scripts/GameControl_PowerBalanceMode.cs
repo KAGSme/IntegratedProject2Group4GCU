@@ -7,7 +7,7 @@ public enum State { Start, Running, Pause, End};
  
 public class GameControl_PowerBalanceMode : MonoBehaviour {
 
-
+    public static GameControl_PowerBalanceMode gameControl;
     public State state;
     public Player[] player = new Player[2];
     public Timer1 timer;
@@ -25,6 +25,7 @@ public class GameControl_PowerBalanceMode : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+        gameControl = this;
         state = State.Start;
         Time.timeScale = 1;
         powerBar = powerObject.GetComponent<Image>();
