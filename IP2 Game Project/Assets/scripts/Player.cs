@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
     public Planet[] playerPlanets;
     public Planet[] playerPlanetDeck;
     public PlanetSpawner pSpawn;
-    private bool isActive;
+    private bool isActive = true;
 
     public float PlayerScore
     {
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour {
 
     void Start()
     {
-        isActive = true;
+        IsActive = true;
         playerScore = 0f;
         if (pSpawn != null)
         {
