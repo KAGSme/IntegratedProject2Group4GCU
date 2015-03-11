@@ -40,7 +40,7 @@ public class PowerBalance : MonoBehaviour {
                                 if (hit.collider.gameObject.tag == "PlayerPlanet" && touch.deltaPosition.magnitude >= swipeSpeed)
                                 {
                                     planet = hit.collider.gameObject.GetComponent<Planet>();
-                                    if (planet.belongsToPlayer == PlayerNumber.player1 && planet.IsAlive && planet.energy < 100 && players[0].IsActive)
+                                    if (planet.belongsToPlayer == PlayerNumber.player1 && planet.IsAlive && planet.energy < 100 && players[0].IsActive == true)
                                     {
                                         planet.EnergyExchange(players[0], players[1]);
                                         players[0].playerScore++;
@@ -49,7 +49,7 @@ public class PowerBalance : MonoBehaviour {
 
 
                                     }
-                                    else if (planet.belongsToPlayer == PlayerNumber.player2 && planet.IsAlive && planet.energy < 100 && players[1].IsActive)
+                                    else if (planet.belongsToPlayer == PlayerNumber.player2 && planet.IsAlive && planet.energy < 100 && players[1].IsActive == true)
                                     {
                                         planet.EnergyExchange(players[1], players[0]);
                                         players[1].playerScore++;
