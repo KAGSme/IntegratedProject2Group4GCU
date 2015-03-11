@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class PowerBalance : MonoBehaviour {
 
@@ -8,6 +9,10 @@ public class PowerBalance : MonoBehaviour {
     public Player[] players = new Player[2];
     public GameControl_PowerBalanceMode gameController;
     public float swipeSpeed = 3f;
+    string status;
+    particleEffectsStates paticleState;
+    Planet[] temp = new Planet[4];
+
     void Update()
     {
         PlayerSwipe();
@@ -35,20 +40,34 @@ public class PowerBalance : MonoBehaviour {
                                 if (hit.collider.gameObject.tag == "PlayerPlanet" && touch.deltaPosition.magnitude >= swipeSpeed)
                                 {
                                     planet = hit.collider.gameObject.GetComponent<Planet>();
-                                    if (planet.belongsToPlayer == PlayerNumber.player1 && planet.IsAlive && planet.energy<100)
+                                    if (planet.belongsToPlayer == PlayerNumber.player1 && planet.IsAlive && planet.energy < 100)
                                     {
                                         planet.EnergyExchange(players[0], players[1]);
                                         players[0].playerScore++;
+                                        planet.particleSystem.active = true;
+                                        temp[touch.fingerId] = planet;
+
 
                                     }
-                                    else if (planet.belongsToPlayer == PlayerNumber.player2 && planet.IsAlive && planet.energy <100)
+                                    else if (planet.belongsToPlayer == PlayerNumber.player2 && planet.IsAlive && planet.energy < 100)
                                     {
                                         planet.EnergyExchange(players[1], players[0]);
                                         players[1].playerScore++;
+                                        planet.particleSystem.active = true;
+                                        temp[touch.fingerId] = planet;
+ 
                                     }
                                 }
+                                else
+                                {
+                                    temp[touch.fingerId].particleSystem.active = false;
+                                }
+
                             }
                             break;
+                        case(TouchPhase.Ended):
+                                temp[touch.fingerId].particleSystem.active = false;
+                                break;
                             
                     }
                 }
@@ -63,9 +82,11 @@ public class PowerBalance : MonoBehaviour {
        {
             for (int i = 0; i < Input.touchCount; i++)
             {
-                GUI.Label(new Rect(0, 10 * i,200,200), " " + Input.GetTouch(i).deltaPosition.magnitude);
+                GUI.Label(new Rect(0, 10 * i,200,200), " " + status);
             }
         }
     }
+
+
 
 }

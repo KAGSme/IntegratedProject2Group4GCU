@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public enum DrainType { swipeSpeed, overTime};
+public enum particleEffectsStates { active, inactive};
 
 public class Planet : MonoBehaviour {
 
@@ -19,6 +20,8 @@ public class Planet : MonoBehaviour {
     private bool isActive;
     public GameControl_PowerBalanceMode gameController;
     public Image energyBar;
+    public GameObject particleSystem;
+    particleEffectsStates particleState;
 
     public bool IsAlive
     {
@@ -56,6 +59,14 @@ public class Planet : MonoBehaviour {
     {
         DrainSpeedCheck();
         PlanetDeath();
+        if (particleSystem.active == true)
+        {
+            particleState = particleEffectsStates.active;
+        }
+        else
+        {
+            particleState = particleEffectsStates.inactive;
+        }
     }
 
     void DrainSpeedCheck()
