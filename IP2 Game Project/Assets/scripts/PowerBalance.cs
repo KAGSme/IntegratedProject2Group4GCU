@@ -10,7 +10,6 @@ public class PowerBalance : MonoBehaviour {
     public GameControl_PowerBalanceMode gameController;
     public float swipeSpeed = 3f;
     string status;
-    particleEffectsStates paticleState;
     Planet[] temp = new Planet[4];
 
     void Update()
