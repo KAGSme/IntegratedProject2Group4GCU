@@ -109,6 +109,7 @@ public class Planet : MonoBehaviour {
         if (Energy <= MinEnergy)
         {
             isAlive = false;
+			gameObject.active = false;
         }
     }
 }
