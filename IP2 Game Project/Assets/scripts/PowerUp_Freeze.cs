@@ -3,20 +3,19 @@ using System.Collections;
 
 public class PowerUp_Freeze : MonoBehaviour {
 
-    Player player;
+    public Player opposingPlayer;
     public PowerUp_Base powerUpBase;
     public float freezeTime = 3f;
-    public GameObject FreezeButton;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         if (powerUpBase.planet.belongsToPlayer == PlayerNumber.player1)
         {
-            player = GameControl_PowerBalanceMode.gameControl.player[0];
+            opposingPlayer = GameObject.Find("Player 2").GetComponent<Player>();
         }
         else if (powerUpBase.planet.belongsToPlayer == PlayerNumber.player2)
         {
-            player = GameControl_PowerBalanceMode.gameControl.player[1];
+            opposingPlayer = GameObject.Find("Player 1").GetComponent<Player>();
         }
 	}
 	
@@ -24,7 +23,7 @@ public class PowerUp_Freeze : MonoBehaviour {
 	void Update () {
         if (powerUpBase.IsActive == true)
         {
-            FreezeButton.SetActive(true);
+            Freeze(freezeTime);
         }
 	}
 
@@ -33,10 +32,10 @@ public class PowerUp_Freeze : MonoBehaviour {
         if (powerUpBase.IsActive == true)
         {
             float timer = Time.time;
-            player.IsActive = false;
+            opposingPlayer.IsActive = false;
             if (Time.time - timer == waitTime)
             {
-                powerUpBase.IsActive = false;
+                opposingPlayer.IsActive = true;
             }
         }
     }
