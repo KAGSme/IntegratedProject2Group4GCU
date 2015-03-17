@@ -25,7 +25,7 @@ public class Player : MonoBehaviour {
         set { isActive = value; }
     }
 
-    void Start()
+    void Awake()
     {
         IsActive = true;
         playerScore = 0f;

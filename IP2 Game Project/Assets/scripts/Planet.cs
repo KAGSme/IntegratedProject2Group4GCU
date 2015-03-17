@@ -48,10 +48,9 @@ public class Planet : MonoBehaviour {
         set { energy = value; }
     }
 
-	void Start () {
+	void Awake () {
         Energy = maxEnergy / 2;
         isAlive = true;
-        energyBar = GetComponentInChildren<Image>();
         energyBar.fillAmount = 0.5f;
 
 	}

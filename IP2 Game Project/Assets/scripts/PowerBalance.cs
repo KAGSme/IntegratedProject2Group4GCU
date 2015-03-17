@@ -57,10 +57,10 @@ public class PowerBalance : MonoBehaviour {
  
                                     }
                                 }
-                                else
-                                {
-                                    temp[touch.fingerId].particleSystem.SetActive(false);
-                                }
+                                //else
+                                //{
+                                //    temp[touch.fingerId].particleSystem.SetActive(false);
+                                //}
 
                             }
                             break;
