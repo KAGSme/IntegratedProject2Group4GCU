@@ -43,7 +43,7 @@ public class PowerBalance : MonoBehaviour {
                                     {
                                         planet.EnergyExchange(players[0], players[1]);
                                         players[0].playerScore++;
-                                        planet.particleSystem.active = true;
+                                        planet.particleSystem.SetActive(true);
                                         temp[touch.fingerId] = planet;
 
 
@@ -52,20 +52,20 @@ public class PowerBalance : MonoBehaviour {
                                     {
                                         planet.EnergyExchange(players[1], players[0]);
                                         players[1].playerScore++;
-                                        planet.particleSystem.active = true;
+                                        planet.particleSystem.SetActive(true);
                                         temp[touch.fingerId] = planet;
  
                                     }
                                 }
                                 else
                                 {
-                                    temp[touch.fingerId].particleSystem.active = false;
+                                    temp[touch.fingerId].particleSystem.SetActive(false);
                                 }
 
                             }
                             break;
                         case(TouchPhase.Ended):
-                                temp[touch.fingerId].particleSystem.active = false;
+                            temp[touch.fingerId].particleSystem.SetActive(false);
                                 break;
                             
                     }

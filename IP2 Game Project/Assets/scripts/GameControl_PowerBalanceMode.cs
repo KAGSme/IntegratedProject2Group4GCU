@@ -42,19 +42,19 @@ public class GameControl_PowerBalanceMode : MonoBehaviour {
         PowerBar();
         if (state == State.End)
         {
-            winnerTextGameObject.active = true;
+            winnerTextGameObject.SetActive(true);
         }
         else
         {
-            winnerTextGameObject.active = false;
+            winnerTextGameObject.SetActive(false);
         }
     }
     void ButtonState()
     {
         if (state == State.End)
         {
-            playAgainButton.active = true;
-            QuitButton.active = true;
+            playAgainButton.SetActive(true);
+            QuitButton.SetActive(true);
         }
     }
 
@@ -72,11 +72,11 @@ public class GameControl_PowerBalanceMode : MonoBehaviour {
     {
         if (state == State.Running)
         {
-            powerBarObject.active = true;
+            powerBarObject.SetActive(true);
         }
         else
         {
-            powerBarObject.active = false;
+            powerBarObject.SetActive(false);
         }
 
         totalScore = player[0].playerScore + player[1].playerScore;
