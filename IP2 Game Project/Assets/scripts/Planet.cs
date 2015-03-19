@@ -48,7 +48,12 @@ public class Planet : MonoBehaviour {
         set { energy = value; }
     }
 
-	void Awake () {
+    void Start()
+    {
+        SetPlanetActive();
+    }
+
+	public void SetPlanetActive () {
         Energy = maxEnergy / 2;
         isAlive = true;
         energyBar.fillAmount = 0.5f;

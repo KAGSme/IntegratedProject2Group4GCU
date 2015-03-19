@@ -12,19 +12,23 @@ public class PlanetSpawner : MonoBehaviour {
     /// <param name="NewPlanets">Planets to be instantiated</param>
     /// <param name="currentPlanets">default planets to be replaced</param>
     /// <param name="player">player's planets to be assigned</param>
-    public void SpawnPlanets(Planet[] NewPlanets, Planet[] currentPlanets, Player player)
+    public void SpawnPlanets(GameObject[] NewPlanets, Planet[] currentPlanets, Player player)
     {
         if (isActive)
         {
+            Planet[] newPlanetScript = null;
             for (int i = 0; i < currentPlanets.Length; i++)
             {
-                player.playerPlanets[i].belongsToPlayer = currentPlanets[i].belongsToPlayer;
-                player.playerPlanets[i].gameController = currentPlanets[i].gameController;
-                player.playerPlanets[i].energyBar = currentPlanets[i].energyBar;
-                player.playerPlanets[i].planetNumber = currentPlanets[i].planetNumber;
-                player.playerPlanets[i].energyBar = currentPlanets[i].energyBar;
+                Planet tempPlanet; 
+                Instantiate((GameObject)NewPlanets[i], currentPlanets[i].gameObject.transform.position, Quaternion.identity);
+                tempPlanet = NewPlanets[i].gameObject.GetComponent<Planet>();
+                newPlanetScript[i] = tempPlanet;
+                newPlanetScript[i].belongsToPlayer = currentPlanets[i].belongsToPlayer;
+                newPlanetScript[i].gameController = currentPlanets[i].gameController;
+                newPlanetScript[i].energyBar = currentPlanets[i].energyBar;
+                newPlanetScript[i].planetNumber = currentPlanets[i].planetNumber;
+                newPlanetScript[i].SetPlanetActive();
                 Destroy(currentPlanets[i].gameObject);
-                player.playerPlanets[i].gameObject.SetActive(true);
                 
             }
         }
