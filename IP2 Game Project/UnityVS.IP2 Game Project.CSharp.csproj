@@ -57,20 +57,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\scripts\CountDown.cs" />
-    <Compile Include="Assets\scripts\GameControl_PowerBalanceMode.cs" />
+    <Compile Include="Assets\scripts\GraphicRotation.cs" />
     <Compile Include="Assets\scripts\MainMenu.cs" />
-    <Compile Include="Assets\scripts\NetworkManager.cs" />
-    <Compile Include="Assets\scripts\Planet.cs" />
     <Compile Include="Assets\scripts\PlanetSpawner.cs" />
-    <Compile Include="Assets\scripts\Player.cs" />
-    <Compile Include="Assets\scripts\PlayerData.cs" />
-    <Compile Include="Assets\scripts\PowerBalance.cs" />
+    <Compile Include="Assets\scripts\PowerBalanceModeScripts\CountDown.cs" />
+    <Compile Include="Assets\scripts\PowerBalanceModeScripts\GameControl_PowerBalanceMode.cs" />
+    <Compile Include="Assets\scripts\PowerBalanceModeScripts\Planet.cs" />
+    <Compile Include="Assets\scripts\PowerBalanceModeScripts\Player.cs" />
+    <Compile Include="Assets\scripts\PowerBalanceModeScripts\PowerBalance_Input.cs" />
+    <Compile Include="Assets\scripts\PowerBalanceModeScripts\PowerBalance_UI.cs" />
+    <Compile Include="Assets\scripts\PowerBalanceModeScripts\Timer.cs" />
     <Compile Include="Assets\scripts\PowerUp_Base.cs" />
     <Compile Include="Assets\scripts\PowerUp_Freeze.cs" />
-    <Compile Include="Assets\scripts\ProfileControl.cs" />
+    <Compile Include="Assets\scripts\Scripts Not Used\NetworkManager.cs" />
+    <Compile Include="Assets\scripts\Scripts Not Used\PlayerData.cs" />
+    <Compile Include="Assets\scripts\Scripts Not Used\ProfileControl.cs" />
     <Compile Include="Assets\scripts\Store.cs" />
-    <Compile Include="Assets\scripts\Timer1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />

@@ -1,0 +1,195 @@
+fileFormatVersion: 2
+guid: f0f250153d26262448617c20788a3a3e
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Circle001
+    100002: earth_planet _3
+    100004: Earth_planet_2
+    100006: Earth_planet_3
+    100008: Fire_planet_1
+    100010: Fire_Planet_2
+    100012: Fire_planet_3
+    100014: ice_planet_011
+    100016: Ice_planet_1
+    100018: ice_planet_2
+    100020: Ice_planet_3
+    100022: ice_planet_4
+    100024: Money_planet_1
+    100026: Money_planet_2
+    100028: Money_planet_3
+    100030: //RootNode
+    100032: Plasma_planet_1
+    100034: Plasma_planet_2
+    100036: Plasma_planet_3
+    100038: Plasma_planet_4
+    100040: Storm_planet_1
+    100042: Storm_planet_2
+    100044: Tiger_planet
+    100046: Toxic_planet_1
+    100048: Toxic_planet_2
+    100050: Toxic_planet_3
+    100052: Uknown_planet_1
+    100054: Uknown_planet_2
+    400000: Circle001
+    400002: earth_planet _3
+    400004: Earth_planet_2
+    400006: Earth_planet_3
+    400008: Fire_planet_1
+    400010: Fire_Planet_2
+    400012: Fire_planet_3
+    400014: ice_planet_011
+    400016: Ice_planet_1
+    400018: ice_planet_2
+    400020: Ice_planet_3
+    400022: ice_planet_4
+    400024: Money_planet_1
+    400026: Money_planet_2
+    400028: Money_planet_3
+    400030: //RootNode
+    400032: Plasma_planet_1
+    400034: Plasma_planet_2
+    400036: Plasma_planet_3
+    400038: Plasma_planet_4
+    400040: Storm_planet_1
+    400042: Storm_planet_2
+    400044: Tiger_planet
+    400046: Toxic_planet_1
+    400048: Toxic_planet_2
+    400050: Toxic_planet_3
+    400052: Uknown_planet_1
+    400054: Uknown_planet_2
+    2300000: Circle001
+    2300002: earth_planet _3
+    2300004: Earth_planet_2
+    2300006: Earth_planet_3
+    2300008: Fire_planet_1
+    2300010: Fire_Planet_2
+    2300012: Fire_planet_3
+    2300014: Ice_planet_1
+    2300016: ice_planet_2
+    2300018: Ice_planet_3
+    2300020: ice_planet_4
+    2300022: Money_planet_1
+    2300024: Money_planet_2
+    2300026: Money_planet_3
+    2300028: Plasma_planet_1
+    2300030: Plasma_planet_2
+    2300032: Plasma_planet_3
+    2300034: Plasma_planet_4
+    2300036: Storm_planet_1
+    2300038: Storm_planet_2
+    2300040: Tiger_planet
+    2300042: Toxic_planet_1
+    2300044: Toxic_planet_2
+    2300046: Toxic_planet_3
+    2300048: Uknown_planet_1
+    2300050: Uknown_planet_2
+    3300000: Circle001
+    3300002: earth_planet _3
+    3300004: Earth_planet_2
+    3300006: Earth_planet_3
+    3300008: Fire_planet_1
+    3300010: Fire_Planet_2
+    3300012: Fire_planet_3
+    3300014: Ice_planet_1
+    3300016: ice_planet_2
+    3300018: Ice_planet_3
+    3300020: ice_planet_4
+    3300022: Money_planet_1
+    3300024: Money_planet_2
+    3300026: Money_planet_3
+    3300028: Plasma_planet_1
+    3300030: Plasma_planet_2
+    3300032: Plasma_planet_3
+    3300034: Plasma_planet_4
+    3300036: Storm_planet_1
+    3300038: Storm_planet_2
+    3300040: Tiger_planet
+    3300042: Toxic_planet_1
+    3300044: Toxic_planet_2
+    3300046: Toxic_planet_3
+    3300048: Uknown_planet_1
+    3300050: Uknown_planet_2
+    4300000: Fire_planet_1
+    4300002: Fire_Planet_2
+    4300004: Fire_planet_3
+    4300006: Plasma_planet_1
+    4300008: Storm_planet_1
+    4300010: Plasma_planet_3
+    4300012: Plasma_planet_2
+    4300014: Ice_planet_1
+    4300016: Circle001
+    4300018: ice_planet_2
+    4300020: Ice_planet_3
+    4300022: ice_planet_4
+    4300024: Storm_planet_2
+    4300026: Toxic_planet_2
+    4300028: Toxic_planet_1
+    4300030: Uknown_planet_1
+    4300032: earth_planet _3
+    4300034: Plasma_planet_4
+    4300036: Toxic_planet_3
+    4300038: Tiger_planet
+    4300040: Earth_planet_2
+    4300042: Uknown_planet_2
+    4300044: Money_planet_2
+    4300046: Money_planet_1
+    4300048: Money_planet_3
+    4300050: Earth_planet_3
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
