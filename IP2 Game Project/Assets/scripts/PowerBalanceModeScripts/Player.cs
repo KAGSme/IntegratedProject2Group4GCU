@@ -7,11 +7,11 @@ public enum PlayerNumber { player1, player2, player3, player4};
 public class Player : MonoBehaviour {
 
     public PlayerNumber playerNumber;
-    public float playerScore;    
+    public int playerScore;    
     public Planet[] playerPlanets;
     private bool isActive = true;
 
-    public float PlayerScore
+    public int PlayerScore
     {
         get { return playerScore; }
         set { playerScore = value; }
@@ -26,21 +26,24 @@ public class Player : MonoBehaviour {
     void Awake()
     {
         IsActive = true;
-        playerScore = 0f;
+        playerScore = 0;
+
+        GameControl_PowerBalanceMode.gameControl.gameEnd += PlayerEnergyTracker;
     }
 
-    void Update()
+    void OnDisable()
     {
+        GameControl_PowerBalanceMode.gameControl.gameEnd -= PlayerEnergyTracker;
     }
+    
 
-    public float PlayerEnergyTracker()
+    void PlayerEnergyTracker()
     {
-        float totalEnergy = 0;
+        PlayerScore = 0;
         foreach (Planet planet in playerPlanets)
         {
-            totalEnergy += planet.Energy;
+            PlayerScore += Convert.ToInt32(planet.Energy);
         }
-        return totalEnergy;
     }
 
 

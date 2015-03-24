@@ -25,6 +25,8 @@ public class Planet : MonoBehaviour {
     private bool isAlive;
     public Image energyBar;
     public GameObject gainParticleSystem;
+    [Range(0, 3)]
+    public float gainParticleLength;
     public GameObject deathParticleSystem;
     public GameObject planetGraphics;
 
@@ -82,7 +84,7 @@ public class Planet : MonoBehaviour {
         if (Energy < maxEnergy)
         {
             Energy += baseDrainSpeed *  swipeSpeed * Time.deltaTime;
-            Particles(0.2f, gainParticleSystem); 
+            StartCoroutine(Particles(gainParticleLength, gainParticleSystem)); 
         }
 
     }

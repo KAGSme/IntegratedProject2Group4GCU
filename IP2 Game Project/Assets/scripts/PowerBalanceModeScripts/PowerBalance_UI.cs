@@ -42,11 +42,9 @@ public class PowerBalance_UI : MonoBehaviour {
         winnerTextGameObject.SetActive(true);
 
         Time.timeScale = 0;
-        winningScore = GameControl_PowerBalanceMode.gameControl.player[0].PlayerScore > GameControl_PowerBalanceMode.gameControl.player[0].PlayerScore ?
-            GameControl_PowerBalanceMode.gameControl.player[0].PlayerScore : GameControl_PowerBalanceMode.gameControl.player[1].PlayerScore;
 
-        winnerMessage = GameControl_PowerBalanceMode.gameControl.player[0].PlayerScore > GameControl_PowerBalanceMode.gameControl.player[0].PlayerScore ?
-            "Blue wins with " + Convert.ToString(winningScore) + " points" : "Red wins with " + Convert.ToString(winningScore) + " points";
+        winnerMessage = GameControl_PowerBalanceMode.gameControl.player[0].PlayerScore > GameControl_PowerBalanceMode.gameControl.player[1].PlayerScore ?
+            "Blue wins with " + Convert.ToString(GameControl_PowerBalanceMode.gameControl.player[0].PlayerScore) + " points" : "Red wins with " + Convert.ToString(GameControl_PowerBalanceMode.gameControl.player[1].PlayerScore) + " points";
 
         winnerText.text = winnerMessage;
     }
