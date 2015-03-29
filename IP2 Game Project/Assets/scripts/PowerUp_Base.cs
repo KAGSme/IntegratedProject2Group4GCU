@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PowerUp_Base : MonoBehaviour {
 
-    public delegate void PowerUpFunc();
+    public delegate void PowerUpFunc(Player thePlayer, bool used);
     public PowerUpFunc PowerUp;
 
     [Range(0,500)]
@@ -12,7 +12,9 @@ public class PowerUp_Base : MonoBehaviour {
     public int minScoreLimit = 50;
     public Player player;
     bool isActive;
+    bool used;
     PowerUp_Freeze freeze;
+    PowerUp_Fire fire;
 
 
     public bool IsActive
@@ -20,10 +22,16 @@ public class PowerUp_Base : MonoBehaviour {
         get { return isActive; }
         set { isActive = value; }
     }
+    public bool Used
+    {
+        get { return used; }
+        set { used = value; }
+    }
 
     void Start()
     {
         isActive = false;
+        used = false;
         freeze = GetComponent<PowerUp_Freeze>();
     }
 
@@ -34,21 +42,26 @@ public class PowerUp_Base : MonoBehaviour {
 
     void EnergyCheck()
     {
-            if (!isActive)
+        if (!IsActive)
         {
             if (player.PlayerScore >= maxScoreLimit || player.PlayerScore <= minScoreLimit)
             {
                 IsActive = true;
-                if (PowerUp != null)
-                {
-                    PowerUp();
-                }
             }
+        }
+        if (PowerUp != null && IsActive && !used)
+        {
+            PowerUp(player, Used);
         }
     }
 
     public void SetFreeze()
     {
         PowerUp += freeze.Freeze;
+    }
+
+    public void SetFire()
+    {
+        PowerUp += fire.Fire;
     }
 }
