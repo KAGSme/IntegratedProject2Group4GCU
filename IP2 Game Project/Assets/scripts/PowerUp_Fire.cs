@@ -10,6 +10,7 @@ public class PowerUp_Fire : MonoBehaviour {
     public void Fire(Player thePlayer, bool used)
     {
         float timer = Time.time;
+        fireParticles.SetActive(true);
 
         foreach (Planet planet in thePlayer.playerPlanets)
         {
@@ -21,8 +22,9 @@ public class PowerUp_Fire : MonoBehaviour {
             foreach (Planet planet in thePlayer.playerPlanets)
             {
                 planet.baseDrainSpeed -= baseDraingIncrease;
-                used = true;
             }
+            fireParticles.SetActive(false);
+            used = true;
         }
     }
 }
