@@ -12,6 +12,7 @@ public class PowerUp_Freeze : MonoBehaviour {
         float timer = Time.time;
         opposingPlayer.IsActive = false;
         freezeParticles.SetActive(true);
+
         if (Time.time - timer >= freezeTime)
         {
             opposingPlayer.IsActive = true;
