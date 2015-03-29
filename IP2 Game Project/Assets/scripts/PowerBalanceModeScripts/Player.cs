@@ -31,6 +31,7 @@ public class Player : MonoBehaviour {
         GameControl_PowerBalanceMode.gameControl.gameEnd += PlayerEnergyTracker;
     }
 
+
     void OnDisable()
     {
         GameControl_PowerBalanceMode.gameControl.gameEnd -= PlayerEnergyTracker;
