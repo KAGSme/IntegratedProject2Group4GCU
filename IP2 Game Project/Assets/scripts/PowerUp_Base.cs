@@ -33,9 +33,11 @@ public class PowerUp_Base : MonoBehaviour {
         isActive = false;
         used = false;
         freeze = GetComponent<PowerUp_Freeze>();
+        fire = GetComponent<PowerUp_Fire>();
+        PowerUp = fire.Fire;
     }
 
-    void OnEnable()
+    void OnStart()
     {
         GameControl_PowerBalanceMode.gameControl.gameRun += EnergyCheck;
     }
@@ -49,6 +51,7 @@ public class PowerUp_Base : MonoBehaviour {
                 IsActive = true;
             }
         }
+        else { IsActive = false; }
         if (PowerUp != null && IsActive && !used)
         {
             PowerUp(player, Used);
@@ -57,11 +60,11 @@ public class PowerUp_Base : MonoBehaviour {
 
     public void SetFreeze()
     {
-        PowerUp += freeze.Freeze;
+        PowerUp = freeze.Freeze;
     }
 
     public void SetFire()
     {
-        PowerUp += fire.Fire;
+        PowerUp = fire.Fire;
     }
 }
