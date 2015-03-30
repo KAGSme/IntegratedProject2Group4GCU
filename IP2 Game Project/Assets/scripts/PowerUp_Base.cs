@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PowerUp_Base : MonoBehaviour {
 
-    public delegate void PowerUpFunc(Player thePlayer, bool used);
+    public delegate void PowerUpFunc(Player thePlayer, bool usedbool);
     public PowerUpFunc PowerUp;
 
     [Range(0,500)]
@@ -49,7 +49,7 @@ public class PowerUp_Base : MonoBehaviour {
 
     void EnergyCheck()
     {
-            if (player.PlayerScore <= minScoreLimit)
+            if (player.PlayerScore <= minScoreLimit || player.PlayerScore >= maxScoreLimit)
             {
                 IsActive = true;
             } 
@@ -57,7 +57,7 @@ public class PowerUp_Base : MonoBehaviour {
 
     void Update()
     {
-        if (IsActive && !Used)
+        if (IsActive)
         {
             if (PowerUp != null)
             {

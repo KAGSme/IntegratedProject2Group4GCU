@@ -24,7 +24,6 @@ public class PowerUp_Fire : MonoBehaviour {
                 planet.baseDrainSpeed -= baseDraingIncrease;
             }
             fireParticles.SetActive(false);
-            used = true;
         }
     }
 }
