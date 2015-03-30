@@ -28,13 +28,13 @@ public class Player : MonoBehaviour {
         IsActive = true;
         playerScore = 0;
 
-        GameControl_PowerBalanceMode.gameControl.gameEnd += PlayerEnergyTracker;
+        GameControl_PowerBalanceMode.gameControl.gameRun += PlayerEnergyTracker;
     }
 
 
     void OnDisable()
     {
-        GameControl_PowerBalanceMode.gameControl.gameEnd -= PlayerEnergyTracker;
+        GameControl_PowerBalanceMode.gameControl.gameRun -= PlayerEnergyTracker;
     }
     
 
@@ -43,7 +43,10 @@ public class Player : MonoBehaviour {
         PlayerScore = 0;
         foreach (Planet planet in playerPlanets)
         {
-            PlayerScore += Convert.ToInt32(planet.Energy);
+            if (planet.IsAlive)
+            {
+                PlayerScore += Convert.ToInt32(planet.Energy);
+            }
         }
     }
 

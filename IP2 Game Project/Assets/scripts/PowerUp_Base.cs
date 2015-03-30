@@ -13,8 +13,8 @@ public class PowerUp_Base : MonoBehaviour {
     public Player player;
     bool isActive;
     bool used;
-    PowerUp_Freeze freeze;
-    PowerUp_Fire fire;
+    public PowerUp_Freeze freeze;
+    public PowerUp_Fire fire;
 
 
     public bool IsActive
@@ -42,19 +42,27 @@ public class PowerUp_Base : MonoBehaviour {
         GameControl_PowerBalanceMode.gameControl.gameRun += EnergyCheck;
     }
 
+    void OnDisable()
+    {
+        GameControl_PowerBalanceMode.gameControl.gameRun -= EnergyCheck;
+    }
+
     void EnergyCheck()
     {
-        if (!IsActive)
-        {
-            if (player.PlayerScore >= maxScoreLimit || player.PlayerScore <= minScoreLimit)
+            if (player.PlayerScore <= minScoreLimit)
             {
                 IsActive = true;
-            }
-        }
-        else { IsActive = false; }
-        if (PowerUp != null && IsActive && !used)
+            } 
+    }
+
+    void Update()
+    {
+        if (IsActive && !Used)
         {
-            PowerUp(player, Used);
+            if (PowerUp != null)
+            {
+                PowerUp(player, used);
+            }
         }
     }
 

@@ -45,7 +45,9 @@ public class PowerBalance_Input : MonoBehaviour {
                                 Planet planet = hit.collider.gameObject.GetComponent<Planet>();
                                 Player drainedPlayer = players[0];
                                 drainedPlayer = planet.belongsToPlayer == PlayerNumber.player1 ? drainedPlayer = players[1] :  drainedPlayer = players[0];
-                                if (planet.hit != null)
+                                Player drainingPlayer = players[1];
+                                drainingPlayer = drainedPlayer == players[1] ? drainingPlayer = players[0] : drainingPlayer = players[1];
+                                if (planet.hit != null && drainingPlayer.IsActive)
                                 {
                                     planet.hit(drainedPlayer, touch.deltaPosition.magnitude);
                                 }
