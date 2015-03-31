@@ -57,7 +57,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\scripts\Debug_Android.cs" />
     <Compile Include="Assets\scripts\GraphicRotation.cs" />
     <Compile Include="Assets\scripts\MainMenu.cs" />
     <Compile Include="Assets\scripts\PowerBalanceModeScripts\CountDown.cs" />
@@ -73,8 +72,6 @@
     <Compile Include="Assets\scripts\Scripts Not Used\NetworkManager.cs" />
     <Compile Include="Assets\scripts\Scripts Not Used\PlayerData.cs" />
     <Compile Include="Assets\scripts\Scripts Not Used\ProfileControl.cs" />
-    <Compile Include="Assets\scripts\Scripts Not Used\Store.cs" />
-    <Compile Include="Assets\scripts\StarTwinkle.cs" />
     <Compile Include="Assets\scripts\Store.cs" />
   </ItemGroup>
   <ItemGroup>
