@@ -29,6 +29,10 @@ public class Planet : MonoBehaviour {
     public float gainParticleLength;
     public GameObject deathParticleSystem;
     public GameObject planetGraphics;
+    public GameObject planetTouchGraphics;
+    public AudioClip PlanetDiesAudio;
+    public AudioClip PlanetNearDeathAudio;
+    public AudioClip PlanetRevivalAudio;
 
 
     public bool IsAlive
@@ -61,6 +65,8 @@ public class Planet : MonoBehaviour {
             hit += EnergyDrain;
             hit += PlanetWinningIndicator;
         }
+
+        planetTouchGraphics.SetActive(false);
     }
 
 	void SetPlanetActive () {
@@ -72,6 +78,12 @@ public class Planet : MonoBehaviour {
     void Update()
     {
         energyBar.fillAmount = Energy / maxEnergy;
+
+        if (Energy < 15 && IsAlive && !audio.isPlaying) 
+        {
+            audio.clip = PlanetNearDeathAudio;
+            audio.Play(); 
+        }
     }
 
     /// <summary>
@@ -87,6 +99,11 @@ public class Planet : MonoBehaviour {
             StartCoroutine(Particles(gainParticleLength, gainParticleSystem)); 
         }
 
+        if (!IsAlive && !audio.isPlaying)
+        {
+            audio.clip = PlanetRevivalAudio;
+            audio.Play();
+        }
     }
 
     void EnergyDrain(Player drainedPlayer, float swipeSpeed)
@@ -118,6 +135,10 @@ public class Planet : MonoBehaviour {
         {
             IsAlive = false;
             Energy = revivalRecovery;
+            if (PlanetDiesAudio != null) {
+                audio.clip = PlanetDiesAudio;
+                audio.Play(); 
+            }
             StartCoroutine(Particles(2, deathParticleSystem));
             planetGraphics.SetActive(false);
             if (!IsAlive)
@@ -144,7 +165,7 @@ public class Planet : MonoBehaviour {
         }
     }
 
-    IEnumerator Particles(float particleActiveTime, GameObject particles)
+    public IEnumerator Particles(float particleActiveTime, GameObject particles)
     {
         if (!particles.active)
         {
@@ -152,5 +173,11 @@ public class Planet : MonoBehaviour {
             yield return new WaitForSeconds(particleActiveTime);
             particles.SetActive(false);
         }
+    }
+
+    public void OnTouch()
+    {
+        Debug_Android.debugAOS.Output("PlanetTouchDown");
+        StartCoroutine(Particles(0.1f, planetTouchGraphics));
     }
 }

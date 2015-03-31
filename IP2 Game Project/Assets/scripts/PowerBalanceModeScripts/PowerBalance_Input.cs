@@ -37,6 +37,16 @@ public class PowerBalance_Input : MonoBehaviour {
 
                 switch (touch.phase)
                 {
+                    case(TouchPhase.Began):
+                        if (Physics.Raycast(ray, out hit))
+                        {
+                            if (hit.collider.gameObject.tag == "PlayerPlanet")
+                            {
+                                Planet planet = hit.collider.gameObject.GetComponent<Planet>();
+                                planet.OnTouch();
+                            }
+                        }
+                        break;
                     case (TouchPhase.Moved):
                         if (Physics.Raycast(ray, out hit))
                         {
@@ -44,6 +54,7 @@ public class PowerBalance_Input : MonoBehaviour {
                             {
                                 Planet planet = hit.collider.gameObject.GetComponent<Planet>();
                                 Player drainedPlayer = players[0];
+                                planet.OnTouch();
                                 drainedPlayer = planet.belongsToPlayer == PlayerNumber.player1 ? drainedPlayer = players[1] :  drainedPlayer = players[0];
                                 Player drainingPlayer = players[1];
                                 drainingPlayer = drainedPlayer == players[1] ? drainingPlayer = players[0] : drainingPlayer = players[1];
@@ -51,6 +62,16 @@ public class PowerBalance_Input : MonoBehaviour {
                                 {
                                     planet.hit(drainedPlayer, touch.deltaPosition.magnitude);
                                 }
+                            }
+                        }
+                        break;
+                    case (TouchPhase.Stationary):
+                        if (Physics.Raycast(ray, out hit))
+                        {
+                            if (hit.collider.gameObject.tag == "PlayerPlanet")
+                            {
+                                Planet planet = hit.collider.gameObject.GetComponent<Planet>();
+                                planet.OnTouch();
                             }
                         }
                         break;

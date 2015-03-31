@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour {
     public State stateSwitch;
     public Text timerText;
     public bool isStartCountdownTimer;
+    public AudioClip audioTicker;
 	
     // Use this for initialization
 	void Start () 
@@ -42,6 +43,16 @@ public class Timer : MonoBehaviour {
 	void Update () 
     {
         timerText.text = Convert.ToString(Mathf.Round(timer));
+
+        if (audioTicker != null && timer <= audioTicker.length)
+        {
+            if (!audio.isPlaying)
+            {
+                audio.clip = audioTicker;
+                audio.Play();
+            }
+
+        }
 	}
     void CountdownTimer()
     {

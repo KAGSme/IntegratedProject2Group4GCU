@@ -5,17 +5,20 @@ using UnityEngine.UI;
 
 public class PowerBalance_UI : MonoBehaviour {
 
-    public GameObject winnerTextGameObject;
-    Text winnerText;
-    float winningScore;
-    string winnerMessage;
+    public GameObject Player1TextObject;
+    public GameObject Player2TextObject;
+    Text Player1Text;
+    Text Player2Text;
     public GameObject playAgainButton;
     
 
 	// Use this for initialization
 	void Start () {
-        winnerText = winnerTextGameObject.GetComponent<Text>();
-        winnerTextGameObject.SetActive(false);
+        Player1TextObject.SetActive(false);
+        Player2TextObject.SetActive(false);
+
+        Player1Text = Player1TextObject.GetComponent<Text>();
+        Player2Text = Player2TextObject.GetComponent<Text>();
 
         GameControl_PowerBalanceMode.gameControl.gameEnd += ButtonState;
         GameControl_PowerBalanceMode.gameControl.gameEnd += DecideWinner;
@@ -39,14 +42,26 @@ public class PowerBalance_UI : MonoBehaviour {
 
     void DecideWinner()
     {
-        winnerTextGameObject.SetActive(true);
+        Player1TextObject.SetActive(true);
+        Player2TextObject.SetActive(true);
 
         Time.timeScale = 0;
 
-        winnerMessage = GameControl_PowerBalanceMode.gameControl.player[0].PlayerScore > GameControl_PowerBalanceMode.gameControl.player[1].PlayerScore ?
-            "Blue wins with " + Convert.ToString(GameControl_PowerBalanceMode.gameControl.player[0].PlayerScore) + " points" : "Red wins with " + Convert.ToString(GameControl_PowerBalanceMode.gameControl.player[1].PlayerScore) + " points";
-
-        winnerText.text = winnerMessage;
+        if (GameControl_PowerBalanceMode.gameControl.player[0].PlayerScore > GameControl_PowerBalanceMode.gameControl.player[1].PlayerScore)
+        {
+            Player1Text.text = "You Win!";
+            Player2Text.text = "You Lose!";
+        }
+        else if (GameControl_PowerBalanceMode.gameControl.player[1].PlayerScore > GameControl_PowerBalanceMode.gameControl.player[0].PlayerScore)
+        {
+            Player2Text.text = "You Win!";
+            Player1Text.text = "You Lose!";
+        }
+        else if (GameControl_PowerBalanceMode.gameControl.player[0].PlayerScore == GameControl_PowerBalanceMode.gameControl.player[1].PlayerScore)
+        {
+            Player2Text.text = "Draw!";
+            Player1Text.text = "Draw!";
+        }
     }
 	
     
