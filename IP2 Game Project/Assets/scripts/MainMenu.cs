@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
   //  public float swipeSpeed = 3f;
+	public GameObject button;
     public Image energyBar;
     string status;
 	// Use this for initialization
@@ -50,7 +51,7 @@ public class MainMenu : MonoBehaviour {
                         {
                             if (hit.collider.gameObject.tag == "PlayerPlanet")
                             {
-                                energyBar.fillAmount+=0.1f;
+                                energyBar.fillAmount += 0.1f * Time.deltaTime;
                                 status = "hit";
                             }
                         }
@@ -64,4 +65,6 @@ public class MainMenu : MonoBehaviour {
     {
         GUI.Label(new Rect(10, 10, 100, 100), status);
     }
+
+
 }
