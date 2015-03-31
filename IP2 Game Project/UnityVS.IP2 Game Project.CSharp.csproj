@@ -59,7 +59,6 @@
   <ItemGroup>
     <Compile Include="Assets\scripts\GraphicRotation.cs" />
     <Compile Include="Assets\scripts\MainMenu.cs" />
-    <Compile Include="Assets\scripts\PlanetSpawner.cs" />
     <Compile Include="Assets\scripts\PowerBalanceModeScripts\CountDown.cs" />
     <Compile Include="Assets\scripts\PowerBalanceModeScripts\GameControl_PowerBalanceMode.cs" />
     <Compile Include="Assets\scripts\PowerBalanceModeScripts\Planet.cs" />
@@ -68,6 +67,7 @@
     <Compile Include="Assets\scripts\PowerBalanceModeScripts\PowerBalance_UI.cs" />
     <Compile Include="Assets\scripts\PowerBalanceModeScripts\Timer.cs" />
     <Compile Include="Assets\scripts\PowerUp_Base.cs" />
+    <Compile Include="Assets\scripts\PowerUp_Fire.cs" />
     <Compile Include="Assets\scripts\PowerUp_Freeze.cs" />
     <Compile Include="Assets\scripts\Scripts Not Used\NetworkManager.cs" />
     <Compile Include="Assets\scripts\Scripts Not Used\PlayerData.cs" />
