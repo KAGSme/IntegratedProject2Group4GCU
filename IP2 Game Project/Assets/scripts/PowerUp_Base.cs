@@ -65,12 +65,12 @@ public class PowerUp_Base : MonoBehaviour {
             }
         }
     }
-
+    /*
     public void SetFreeze()
     {
         PowerUp = freeze.Freeze;
     }
-
+    */
     public void SetFire()
     {
         PowerUp = fire.Fire;
