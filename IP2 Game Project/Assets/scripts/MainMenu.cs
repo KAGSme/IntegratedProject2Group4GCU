@@ -51,7 +51,7 @@ public class MainMenu : MonoBehaviour {
                         {
                             if (hit.collider.gameObject.tag == "PlayerPlanet")
                             {
-                                energyBar.fillAmount += 0.1f * Time.deltaTime;
+                                energyBar.fillAmount += 0.5f * Time.deltaTime;
                                 status = "hit";
                             }
                         }
