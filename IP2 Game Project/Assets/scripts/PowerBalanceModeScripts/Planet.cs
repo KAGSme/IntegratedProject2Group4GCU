@@ -30,9 +30,11 @@ public class Planet : MonoBehaviour {
     public GameObject deathParticleSystem;
     public GameObject planetGraphics;
     public GameObject planetTouchGraphics;
+    public GameObject warningSign;
     public AudioClip PlanetDiesAudio;
     public AudioClip PlanetNearDeathAudio;
     public AudioClip PlanetRevivalAudio;
+
 
 
     public bool IsAlive
@@ -55,15 +57,16 @@ public class Planet : MonoBehaviour {
     void Start()
     {
         SetPlanetActive();
+        warningSign.SetActive(false);
 
         GameControl_PowerBalanceMode.gameControl.gameRun += PlanetDeath;
         GameControl_PowerBalanceMode.gameControl.gameRun += PlanetRevival;
+        GameControl_PowerBalanceMode.gameControl.gameRun += PlanetDeathIndicator;
 
         if (IsAlive)
         {
             hit += EnergyGain;
             hit += EnergyDrain;
-            hit += PlanetWinningIndicator;
         }
 
         planetTouchGraphics.SetActive(false);
@@ -78,12 +81,6 @@ public class Planet : MonoBehaviour {
     void Update()
     {
         energyBar.fillAmount = Energy / maxEnergy;
-
-        if (Energy < 15 && IsAlive && !audio.isPlaying) 
-        {
-            audio.clip = PlanetNearDeathAudio;
-            audio.Play(); 
-        }
     }
 
     /// <summary>
@@ -114,18 +111,17 @@ public class Planet : MonoBehaviour {
         }
     }
 
-    void PlanetWinningIndicator(Player drainedPlayer, float swipeSpeed)
+    void PlanetDeathIndicator()
     {
-        if (planetGraphics.active)
+        if (Energy < 15 && IsAlive && !audio.isPlaying)
         {
-            if (Energy > drainedPlayer.playerPlanets[planetNumber - 1].Energy)
-            {
-                planetGraphics.renderer.material.color = new Color(180, 255, 180);
-            }
-            else
-            {
-                planetGraphics.renderer.material.color = new Color(255, 180, 180);
-            }
+            audio.clip = PlanetNearDeathAudio;
+            audio.Play();
+            warningSign.SetActive(true);
+        }
+        if (Energy > 15 || !IsAlive)
+        {
+            warningSign.SetActive(false);
         }
     }
 
@@ -144,7 +140,6 @@ public class Planet : MonoBehaviour {
             if (!IsAlive)
             {
                 hit -= EnergyDrain;
-                hit -= PlanetWinningIndicator;
             }
         }
     }
@@ -160,7 +155,6 @@ public class Planet : MonoBehaviour {
             if (IsAlive)
             {
                 hit += EnergyDrain;
-                hit += PlanetWinningIndicator;
             }
         }
     }

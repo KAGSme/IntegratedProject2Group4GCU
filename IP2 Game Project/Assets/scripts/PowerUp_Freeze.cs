@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PowerUp_Freeze : MonoBehaviour {
 
+    // this is an old version of a script, the new version was sadly lost in the aether :(
+
     //public Player opposingPlayer;
     //public PowerUp_Base powerUpBase;
     //public float freezeTime = 3f;
