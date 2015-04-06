@@ -2,39 +2,24 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviour {
-  //  public float swipeSpeed = 3f;
-	public GameObject button;
+public class MainMenu : MonoBehaviour{ // This class is going to deal with all the functionality in the Main Menu
     public Image energyBar;
-    string status;
+
 	// Use this for initialization
 	void Start () {
         energyBar.fillAmount = 0.5f;
-        
-
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
         PlayerSwipe();
-        if (energyBar.fillAmount >= 1)
+        if (energyBar.fillAmount >= 1) // Loads the main level when the bar is full.
         {
             energyBar.fillAmount = 1;
             Application.LoadLevel(1);
         }
 	}
-
-    public void Play()
-    {
-        Application.LoadLevel(1);
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit();
-    }
-    void PlayerSwipe()
+    void PlayerSwipe() //Iterates through the touches the device registered and creates a raycast at the location of the touch, and if it detects a planet, it will fill the bar.
     {
         if (Input.touchCount > 0)
         {
@@ -52,7 +37,6 @@ public class MainMenu : MonoBehaviour {
                             if (hit.collider.gameObject.tag == "PlayerPlanet")
                             {
                                 energyBar.fillAmount += 0.5f * Time.deltaTime;
-                                status = "hit";
                             }
                         }
                         break;
@@ -60,11 +44,5 @@ public class MainMenu : MonoBehaviour {
             }
         }
     }
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect(10, 10, 100, 100), status);
-    }
-
 
 }
