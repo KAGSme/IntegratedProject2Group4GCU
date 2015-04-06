@@ -59,9 +59,9 @@ public class Planet : MonoBehaviour {
         SetPlanetActive();
         warningSign.SetActive(false);
 
-        GameControl_PowerBalanceMode.gameControl.gameRun += PlanetDeath;
-        GameControl_PowerBalanceMode.gameControl.gameRun += PlanetRevival;
-        GameControl_PowerBalanceMode.gameControl.gameRun += PlanetDeathIndicator;
+        GameControl_PowerBalanceMode.gameControl.gameRun += PlanetDeath;    // subscribe to game state
+        GameControl_PowerBalanceMode.gameControl.gameRun += PlanetRevival; // subscribe to game state
+        GameControl_PowerBalanceMode.gameControl.gameRun += PlanetDeathIndicator; // subscribe to game state
 
         if (IsAlive)
         {
@@ -103,6 +103,13 @@ public class Planet : MonoBehaviour {
         }
     }
 
+
+    /// <summary>
+    /// Drains energy from opposing players planet
+    /// </summary>
+    /// <param name="drainedPlayer"></param>
+    /// <param name="swipeSpeed"></param>
+ 
     void EnergyDrain(Player drainedPlayer, float swipeSpeed)
     {
         if (IsAlive)
@@ -111,6 +118,9 @@ public class Planet : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Activates appropriate sound effects to tell player that the energy of planet is low
+    /// </summary>
     void PlanetDeathIndicator()
     {
         if (Energy < 15 && IsAlive && !audio.isPlaying)
@@ -125,6 +135,10 @@ public class Planet : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// implements appropriate behaviour that occurs when planet energy reaches 0 
+    /// </summary>
+ 
     void PlanetDeath()
     {
         if (Energy < MinEnergy && IsAlive)
@@ -144,6 +158,10 @@ public class Planet : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// implements appropriate behaviour that occurs when planet energy reaches above 0 to "bring it back to life"
+    /// </summary>
+ 
     void PlanetRevival()
     {
         if (Energy > MinEnergy && !IsAlive)

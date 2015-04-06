@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PowerUp_Fire : MonoBehaviour {
 
+    // feature cut from project for design reasons, feature will not currently work with in any game mode as of now 
+
     public float fireTime = 3f;
     public float baseDraingIncrease = 1f;
     public GameObject fireParticles;

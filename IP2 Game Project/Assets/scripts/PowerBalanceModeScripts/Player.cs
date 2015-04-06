@@ -37,7 +37,9 @@ public class Player : MonoBehaviour {
         GameControl_PowerBalanceMode.gameControl.gameRun -= PlayerEnergyTracker;
     }
     
-
+    /// <summary>
+    /// regularly updates the player score through out game
+    /// </summary>
     void PlayerEnergyTracker()
     {
         PlayerScore = 0;

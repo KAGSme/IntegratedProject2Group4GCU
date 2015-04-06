@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PowerUp_Base : MonoBehaviour {
 
+    // feature cut from project for design reasons, feature will not currently work with in any game mode as of now 
+
     public delegate void PowerUpFunc(Player thePlayer, bool usedbool);
     public PowerUpFunc PowerUp;
 

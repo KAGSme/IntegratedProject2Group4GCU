@@ -22,6 +22,7 @@ public class GameControl_PowerBalanceMode : MonoBehaviour {
         set{ gameState = value; }
     }
 
+    // switches game state... in hindsight this could have been done by just accessing the public property above
     public void GameStateSwitch(State state)
     {
         gameState = state;
@@ -29,6 +30,7 @@ public class GameControl_PowerBalanceMode : MonoBehaviour {
 
     void Awake()
     {
+        // singletons design pattern(hopefully)
         if (gameControl == null) gameControl = this; else if(gameControl != this) DestroyObject(this.gameObject);
         Debug.Log("awake");
     }
@@ -42,6 +44,7 @@ public class GameControl_PowerBalanceMode : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+    // gamestates are implemented here
     void Update()
     {
         if (gameStart != null && gameState == State.Start) gameStart();

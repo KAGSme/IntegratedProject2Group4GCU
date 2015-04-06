@@ -3,6 +3,8 @@ using System.Collections;
 
 public class NetworkManager : MonoBehaviour {
 
+    // networking feature that began development but was cut from project due to a change in design and for time
+
     private int port = 25000;
     private int maximumPlayerAmount = 2;
     private const string  typeName = "RubIt_Multiplayer_Balance_of_Power";

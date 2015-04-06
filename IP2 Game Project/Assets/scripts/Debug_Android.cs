@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Debug_Android : MonoBehaviour {
 
+    // allows for us to easily change a piece of text on the new gui to log events that occur
+
     public static Debug_Android debugAOS;
 
     public bool isActive = true;

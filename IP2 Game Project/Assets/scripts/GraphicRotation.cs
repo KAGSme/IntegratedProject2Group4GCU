@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GraphicRotation : MonoBehaviour {
 
+    // script rotates objects and can smoothly translate the position of object to it's point of origin
+
     [Range( -30, 30)]
     public float rotation;
     public bool moveToOrigin = true;
